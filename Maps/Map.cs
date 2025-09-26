@@ -11,7 +11,6 @@ public class Map
         City,
     }
     
-    
     char[,] numbers =
     {
         { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
@@ -26,8 +25,9 @@ public class Map
         { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
     };
 
-    public void Show()
+    public void Show(int[] heroPosition)
     {
+        Console.Clear();
         int rows = numbers.GetUpperBound(0) + 1;
         int columns = numbers.Length / rows;
 
@@ -37,25 +37,42 @@ public class Map
             {
                 Console.Write("[");
 
-                switch (numbers[i, j])
+                if (heroPosition[0] == i && heroPosition[1] == j)
                 {
-                    case 'w':
-                        Console.ForegroundColor = ConsoleColor.DarkBlue;
-                        break;
-                    case 'g':
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        break;
-                    case 'm':
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
-                        break;
-                    case 's':
-                        Console.ForegroundColor = ConsoleColor.DarkYellow;
-                        break;
-                    default:
-                        break;
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                }
+                else
+                {
+                    switch (numbers[i, j])
+                    {
+                        case 'w':
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case 'g':
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            break;
+                        case 'm':
+                            Console.ForegroundColor = ConsoleColor.DarkGray;
+                            break;
+                        case 's':
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
-                Console.Write(numbers[i, j]);
+
+                if (heroPosition[0] == i && heroPosition[1] == j)
+                {
+                    Console.Write('K');
+                }
+                else
+                {
+                    Console.Write(numbers[i, j]);
+                }
+
+
                 Console.ResetColor();
                 Console.Write("]");
             }
