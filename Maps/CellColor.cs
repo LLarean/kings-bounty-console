@@ -1,6 +1,6 @@
 namespace kings_bounty_console.Maps;
 
-public class CellColor
+public record CellColor
 {
     private readonly CellType _cellType;
 
