@@ -3,7 +3,7 @@ using kings_bounty_console.Maps;
 
 char[,] content =
 {
-    { 'C', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
+    { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
     { 'w', 'g', 'g', 'g', 'g', 'm', 'g', 'g', 'g', 'w' },
     { 'w', 'C', 'g', 'g', 'g', 'm', 'g', 'T', 'g', 'w' },
     { 'w', 'g', 'g', 'w', 'g', 'm', 'g', 'g', 'g', 'w' },
@@ -18,50 +18,70 @@ char[,] content =
 var map = new Map(content);
 
 var turn = 1;
+var gold = 100;
 bool isRunning = true;
 
 while (isRunning)
 {
     map.Draw();
-    Console.WriteLine($"Turn: {turn}");
-    
+    Console.WriteLine($"\nGold: {gold}, Turn: {turn}");
+
     ConsoleKeyInfo command = Console.ReadKey();
-    
+
     if (command.Key == ConsoleKey.Escape)
     {
         isRunning = false;
     }
 
-    var heroPosition = map.HeroPosition();
-    
+    var newPosition = map.HeroPosition();
+
     if (command.Key == ConsoleKey.UpArrow)
     {
-        heroPosition = new Position(heroPosition.X - 1, heroPosition.Y);
+        newPosition = new Position(newPosition.X - 1, newPosition.Y);
     }
-    
+
     if (command.Key == ConsoleKey.DownArrow)
     {
-        heroPosition = new Position(heroPosition.X + 1, heroPosition.Y);
+        newPosition = new Position(newPosition.X + 1, newPosition.Y);
     }
-    
+
     if (command.Key == ConsoleKey.RightArrow)
     {
-        heroPosition = new Position(heroPosition.X, heroPosition.Y + 1);
+        newPosition = new Position(newPosition.X, newPosition.Y + 1);
     }
-    
+
     if (command.Key == ConsoleKey.LeftArrow)
     {
-        heroPosition = new Position(heroPosition.X, heroPosition.Y - 1);
+        newPosition = new Position(newPosition.X, newPosition.Y - 1);
     }
-    
-    if (map.CanInteract(heroPosition))
+
+    var cellType = map.GetCellTypeByPosition(newPosition);
+
+    if (cellType.ToString() == nameof(CellType.g) || 
+        cellType.ToString() == nameof(CellType.s))
     {
+        map = map.MoveHero(newPosition);
     }
-    else if (map.CanMove(heroPosition))
+    else if (cellType.ToString() == nameof(CellType.T))
     {
-        map = map.MoveHero(heroPosition);
+        Console.Clear();
+        gold += 100;
+        Console.WriteLine("+100 Gold");
+        Console.ReadKey();
     }
-    
+    else if (cellType.ToString() == nameof(CellType.C))
+    {
+        Console.Clear();
+        Console.WriteLine("You have visited the city!");
+        Console.ReadKey();
+    }
+    else if (cellType.ToString() == nameof(CellType.E))
+    {
+        Console.Clear();
+        Console.WriteLine("You have joined the battle!");
+        Console.ReadKey();
+    }
+
     turn++;
 }
 

@@ -39,6 +39,8 @@ public record Map
 
     public Position HeroPosition() => GetPositionByType('H');
 
+    public char GetCellTypeByPosition(Position position) => _content[position.X, position.Y];
+    
     public bool CanInteract(Position position)
     {
         if (position.X < 0 || position.Y < 0) return false;
