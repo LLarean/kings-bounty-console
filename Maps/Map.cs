@@ -1,35 +1,30 @@
 ﻿namespace kings_bounty_console.Maps;
 
-public class Map
+public record Map
 {
-    private enum CellType
+    private readonly char[,] _content;
+
+    public Map(char[,] content, Position heroPosition)
     {
-        Water,
-        Ground,
-        Mountain,
-        Sand,
-        City,
+        _content = content;
     }
     
-    private char[,] _map =
-    {
-        { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
-        { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
-    };
+    private int _rows => _content.GetUpperBound(0) + 1;
+    private int _columns => _content.Length / _rows;
 
-    public void Show(Position heroPosition)
+    public Position HeroPosition() => GetPositionByType(CellType.H);
+
+    // public Map MoveHero(Position heroPosition)
+    // {
+    //     
+    //     return 
+    // }
+
+    public void Draw()
     {
         Console.Clear();
-        int rows = _map.GetUpperBound(0) + 1;
-        int columns = _map.Length / rows;
+        int rows = _content.GetUpperBound(0) + 1;
+        int columns = _content.Length / rows;
 
         for (int x = rows - 1; x >= 0; x--)
         {
@@ -37,31 +32,10 @@ public class Map
             {
                 Console.Write("[");
 
-                // if (heroPosition.X == x && heroPosition.Y == y)
-                // {
-                //     Console.ForegroundColor = ConsoleColor.Magenta;
-                // }
-                // else
-                // {
-                    switch (_map[x, y])
-                    {
-                        case 'w':
-                            Console.ForegroundColor = ConsoleColor.DarkBlue;
-                            break;
-                        case 'g':
-                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                            break;
-                        case 'm':
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                            break;
-                        case 's':
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            break;
-                        default:
-                            break;
-                    }
-                // }
-
+                if (Enum.TryParse(_content[x, y].ToString(), out CellType cellType))
+                {
+                    Console.ForegroundColor = new CellColor(cellType).Value();
+                }
 
                 // if (heroPosition.X == x && heroPosition.Y == y)
                 // {
@@ -69,7 +43,7 @@ public class Map
                 // }
                 // else
                 // {
-                    Console.Write(_map[x, y]);
+                    Console.Write(_content[x, y]);
                 // }
 
 
@@ -79,5 +53,21 @@ public class Map
 
             Console.WriteLine();
         }
+    }
+    
+    private Position GetPositionByType(CellType cellType)
+    {
+        for (int x = _rows - 1; x >= 0; x--)
+        {
+            for (int y = _columns - 1; y >= 0; y--)
+            {
+                if (_content[x, y] == (char)cellType)
+                {
+                    return new Position(x, y);
+                }
+            }
+        }
+
+        return new Position(0, 0);
     }
 }
