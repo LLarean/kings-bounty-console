@@ -14,9 +14,4 @@ public class Position
     public int X => _x;
     
     public int Y => _y;
-    
-    public (int, int) Value()
-    {
-        return (_x, _y);
-    }
 }

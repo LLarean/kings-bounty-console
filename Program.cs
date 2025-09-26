@@ -16,8 +16,6 @@ char[,] content =
 };
 
 var map = new Map(content);
-var hero = new Hero(new Position(map.HeroPosition().X, map.HeroPosition().Y));
-
 bool isRunning = true;
 
 while (isRunning)
@@ -30,32 +28,33 @@ while (isRunning)
         isRunning = false;
     }
 
-    var newPosition = hero.Position;
+    var heroPosition = map.HeroPosition();
     
     if (command.Key == ConsoleKey.UpArrow)
     {
-        newPosition = new Position(hero.Position.X, hero.Position.Y + 1);
+        heroPosition = new Position(heroPosition.X, heroPosition.Y - 1);
     }
     
     if (command.Key == ConsoleKey.DownArrow)
     {
-        newPosition = new Position(hero.Position.X, hero.Position.Y - 1);
+        heroPosition = new Position(heroPosition.X, heroPosition.Y + 1);
     }
     
     if (command.Key == ConsoleKey.RightArrow)
     {
-        newPosition = new Position(hero.Position.X + 1, hero.Position.Y);
+        heroPosition = new Position(heroPosition.X + 1, heroPosition.Y);
     }
     
     if (command.Key == ConsoleKey.LeftArrow)
     {
-        newPosition = new Position(hero.Position.X - 1, hero.Position.Y);
+        heroPosition = new Position(heroPosition.X - 1, heroPosition.Y);
     }
 
-    if (map.CanMove(newPosition))
+    if (map.CanMove(heroPosition))
     {
-        map = map.MoveHero(newPosition);
+        map = map.MoveHero(heroPosition);
     }
+    
 }
 
 Console.ReadKey();
