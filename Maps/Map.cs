@@ -16,9 +16,9 @@ public record Map
     {
         Console.Clear();
 
-        for (int y = 0; y < _columns; y++)
+        for (int x = 0; x < _columns; x++)
         {
-            for (int x = 0; x < _rows; x++)
+            for (int y = 0; y < _rows; y++)
             {
                 Console.Write("[");
 
@@ -39,6 +39,25 @@ public record Map
 
     public Position HeroPosition() => GetPositionByType('H');
 
+    public bool CanInteract(Position position)
+    {
+        if (position.X < 0 || position.Y < 0) return false;
+        if (position.X >= _rows || position.Y >= _columns) return false;
+        if (Enum.TryParse(_content[position.X, position.Y].ToString(), out CellType cellType) == false) return false;
+        
+        return cellType switch {
+            CellType.w => false,
+            CellType.g => false,
+            CellType.m => false,
+            CellType.s => false,
+            CellType.C => true,
+            CellType.H => false,
+            CellType.T => true,
+            CellType.E => true,
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+    
     public bool CanMove(Position position)
     {
         if (position.X < 0 || position.Y < 0) return false;

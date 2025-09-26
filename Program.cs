@@ -16,13 +16,17 @@ char[,] content =
 };
 
 var map = new Map(content);
+
+var turn = 1;
 bool isRunning = true;
 
 while (isRunning)
 {
     map.Draw();
+    Console.WriteLine($"Turn: {turn}");
+    
     ConsoleKeyInfo command = Console.ReadKey();
-
+    
     if (command.Key == ConsoleKey.Escape)
     {
         isRunning = false;
@@ -32,29 +36,33 @@ while (isRunning)
     
     if (command.Key == ConsoleKey.UpArrow)
     {
-        heroPosition = new Position(heroPosition.X, heroPosition.Y - 1);
+        heroPosition = new Position(heroPosition.X - 1, heroPosition.Y);
     }
     
     if (command.Key == ConsoleKey.DownArrow)
     {
-        heroPosition = new Position(heroPosition.X, heroPosition.Y + 1);
+        heroPosition = new Position(heroPosition.X + 1, heroPosition.Y);
     }
     
     if (command.Key == ConsoleKey.RightArrow)
     {
-        heroPosition = new Position(heroPosition.X + 1, heroPosition.Y);
+        heroPosition = new Position(heroPosition.X, heroPosition.Y + 1);
     }
     
     if (command.Key == ConsoleKey.LeftArrow)
     {
-        heroPosition = new Position(heroPosition.X - 1, heroPosition.Y);
+        heroPosition = new Position(heroPosition.X, heroPosition.Y - 1);
     }
-
-    if (map.CanMove(heroPosition))
+    
+    if (map.CanInteract(heroPosition))
+    {
+    }
+    else if (map.CanMove(heroPosition))
     {
         map = map.MoveHero(heroPosition);
     }
     
+    turn++;
 }
 
 Console.ReadKey();
