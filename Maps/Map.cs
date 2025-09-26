@@ -11,7 +11,7 @@ public class Map
         City,
     }
     
-    char[,] numbers =
+    private char[,] _map =
     {
         { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
         { 'w', 'g', 'g', 'g', 'g', 'w', 'g', 'g', 'g', 'w' },
@@ -25,25 +25,25 @@ public class Map
         { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
     };
 
-    public void Show(int[] heroPosition)
+    public void Show(Position heroPosition)
     {
         Console.Clear();
-        int rows = numbers.GetUpperBound(0) + 1;
-        int columns = numbers.Length / rows;
+        int rows = _map.GetUpperBound(0) + 1;
+        int columns = _map.Length / rows;
 
-        for (int i = 0; i < rows; i++)
+        for (int x = rows - 1; x >= 0; x--)
         {
-            for (int j = 0; j < columns; j++)
+            for (int y = columns - 1; y >= 0; y--)
             {
                 Console.Write("[");
 
-                if (heroPosition[0] == i && heroPosition[1] == j)
-                {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                }
-                else
-                {
-                    switch (numbers[i, j])
+                // if (heroPosition.X == x && heroPosition.Y == y)
+                // {
+                //     Console.ForegroundColor = ConsoleColor.Magenta;
+                // }
+                // else
+                // {
+                    switch (_map[x, y])
                     {
                         case 'w':
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -60,17 +60,17 @@ public class Map
                         default:
                             break;
                     }
-                }
+                // }
 
 
-                if (heroPosition[0] == i && heroPosition[1] == j)
-                {
-                    Console.Write('K');
-                }
-                else
-                {
-                    Console.Write(numbers[i, j]);
-                }
+                // if (heroPosition.X == x && heroPosition.Y == y)
+                // {
+                //     Console.Write('K');
+                // }
+                // else
+                // {
+                    Console.Write(_map[x, y]);
+                // }
 
 
                 Console.ResetColor();
