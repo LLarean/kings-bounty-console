@@ -2,15 +2,23 @@
 
 public record Map
 {
-    private readonly char[,] _content;
+    private readonly char[,] _baseState;
+    private readonly char[,] _currentState;
 
-    public Map(char[,] content)
+    public Map(char[,] baseState)
     {
-        _content = content;
+        _baseState = baseState;
+        _currentState = baseState;
     }
     
-    private int _rows => _content.GetUpperBound(0) + 1;
-    private int _columns => _content.Length / _rows;
+    public Map(char[,] baseState, char[,] currentState)
+    {
+        _baseState = baseState;
+        _currentState = currentState;
+    }
+    
+    private int _rows => _baseState.GetUpperBound(0) + 1;
+    private int _columns => _baseState.Length / _rows;
 
     public void Draw()
     {
@@ -22,12 +30,12 @@ public record Map
             {
                 Console.Write("[");
 
-                if (Enum.TryParse(_content[x, y].ToString(), out CellType cellType))
+                if (Enum.TryParse(_currentState[x, y].ToString(), out CellType cellType))
                 {
                     Console.ForegroundColor = new CellColor(cellType).Value();
                 }
 
-                Console.Write(_content[x, y]);
+                Console.Write(_currentState[x, y]);
 
                 Console.ResetColor();
                 Console.Write("]");
@@ -39,61 +47,37 @@ public record Map
 
     public Position HeroPosition() => GetPositionByType('H');
 
-    public char GetCellTypeByPosition(Position position) => _content[position.X, position.Y];
-    
-    public bool CanInteract(Position position)
-    {
-        if (position.X < 0 || position.Y < 0) return false;
-        if (position.X >= _rows || position.Y >= _columns) return false;
-        if (Enum.TryParse(_content[position.X, position.Y].ToString(), out CellType cellType) == false) return false;
-        
-        return cellType switch {
-            CellType.w => false,
-            CellType.g => false,
-            CellType.m => false,
-            CellType.s => false,
-            CellType.C => true,
-            CellType.H => false,
-            CellType.T => true,
-            CellType.E => true,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
-    
-    public bool CanMove(Position position)
-    {
-        if (position.X < 0 || position.Y < 0) return false;
-        if (position.X >= _rows || position.Y >= _columns) return false;
-        if (Enum.TryParse(_content[position.X, position.Y].ToString(), out CellType cellType) == false) return false;
-        
-        return cellType switch {
-            CellType.w => false,
-            CellType.g => true,
-            CellType.m => false,
-            CellType.s => true,
-            CellType.C => true,
-            CellType.H => true,
-            CellType.T => true,
-            CellType.E => true,
-            _ => throw new ArgumentOutOfRangeException()
-        };
-    }
+    public char GetCellTypeByPosition(Position position) => _baseState[position.X, position.Y];
 
-    public Map MoveHero(Position heroPosition)
+    public Map MoveHero(Position newPosition)
     {
-        var newContent = _content;
-        newContent[HeroPosition().X, HeroPosition().Y] = 'g';
-        newContent[heroPosition.X, heroPosition.Y] = 'H';
-        return new Map(newContent);
+        var currentState = _currentState;
+        var oldPosition = HeroPosition();
+        
+        if (_baseState[oldPosition.X, oldPosition.Y] == 'H')
+        {
+            currentState[oldPosition.X, oldPosition.Y] = 'g';
+        }
+        else if (_baseState[oldPosition.X, oldPosition.Y] == 'T')
+        {
+            currentState[oldPosition.X, oldPosition.Y] = 'g';
+        }
+        else
+        {
+            currentState[oldPosition.X, oldPosition.Y] = _baseState[oldPosition.X, oldPosition.Y];
+        }
+        
+        currentState[newPosition.X, newPosition.Y] = 'H';
+        return new Map(_baseState, _currentState);
     }
-
+    
     private Position GetPositionByType(char cellType)
     {
         for (int x = _rows - 1; x >= 0; x--)
         {
             for (int y = _columns - 1; y >= 0; y--)
             {
-                if (_content[x, y] == cellType)
+                if (_baseState[x, y] == cellType)
                 {
                     return new Position(x, y);
                 }

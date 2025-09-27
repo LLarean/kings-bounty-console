@@ -68,6 +68,8 @@ while (isRunning)
         gold += 100;
         Console.WriteLine("+100 Gold");
         Console.ReadKey();
+
+        map = map.MoveHero(newPosition);
     }
     else if (cellType.ToString() == nameof(CellType.C))
     {
