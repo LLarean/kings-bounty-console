@@ -3,6 +3,7 @@
 public class Hero
 {
     private Position _position;
+    private int _gold;
 
     public Hero(Position position)
     {
@@ -10,4 +11,5 @@ public class Hero
     }
     
     public Position Position => _position;
+    public int Gold => _gold;
 }

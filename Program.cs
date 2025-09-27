@@ -16,6 +16,7 @@ char[,] content =
 };
 
 var map = new Map(content);
+var hero = new Hero(map.HeroPosition());
 
 var turn = 1;
 var gold = 100;
@@ -73,9 +74,7 @@ while (isRunning)
     }
     else if (cellType.ToString() == nameof(CellType.C))
     {
-        Console.Clear();
-        Console.WriteLine("You have visited the city!");
-        Console.ReadKey();
+        new City(hero).Enter();
     }
     else if (cellType.ToString() == nameof(CellType.E))
     {
