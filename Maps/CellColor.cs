@@ -16,10 +16,13 @@ public record CellColor
             CellType.g => ConsoleColor.DarkGreen,
             CellType.m => ConsoleColor.DarkGray,
             CellType.s => ConsoleColor.DarkYellow,
+            
             CellType.C => ConsoleColor.Cyan,
             CellType.H => ConsoleColor.Magenta,
             CellType.T => ConsoleColor.Yellow,
             CellType.E => ConsoleColor.Red,
+            
+            CellType.U => ConsoleColor.White,
             _ => throw new ArgumentOutOfRangeException()
         };
     }

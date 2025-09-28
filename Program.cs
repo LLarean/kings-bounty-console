@@ -78,9 +78,7 @@ while (isRunning)
     }
     else if (cellType.ToString() == nameof(CellType.E))
     {
-        Console.Clear();
-        Console.WriteLine("You have joined the battle!");
-        Console.ReadKey();
+        new Battle(hero, new Hero(newPosition)).Enter();
     }
 
     turn++;

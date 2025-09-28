@@ -11,4 +11,6 @@ public enum CellType
     H, // Hero
     T, // Treasure
     E, // Enemy
+    
+    U, // Unit on the battlefield
 }

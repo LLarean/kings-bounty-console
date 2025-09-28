@@ -3,7 +3,7 @@ namespace kings_bounty_console;
 public class City
 {
     private readonly Hero _hero;
-
+    
     public City(Hero hero)
     {
         _hero = hero;
