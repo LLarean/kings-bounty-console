@@ -4,7 +4,7 @@ public class Hero
 {
     private Position _position;
     private int _gold;
-    private Unit[] _units = new []{new Unit()};
+    private Unit[] _units = [new Peasant(), new Archer()];
 
     public Hero(Position position)
     {

@@ -46,14 +46,14 @@ public class Battle
 
     private void SetUnitsTemp()
     {
-        _battleField[0, 0] = 'U';
-        _battleField[1, 0] = 'U';
-        _battleField[2, 0] = 'U';
-        _battleField[3, 0] = 'U';
+        for (int i = 0; i < _hero.Units.Length; i++)
+        {
+            _battleField[i, 0] = _hero.Units[i].Symbol;
+        }
         
-        _battleField[0, 5] = 'U';
-        _battleField[1, 5] = 'U';
-        _battleField[2, 5] = 'U';
-        _battleField[3, 5] = 'U';
+        for (int i = 0; i < _enemy.Units.Length; i++)
+        {
+            _battleField[i, 5] = _hero.Units[i].Symbol;
+        }
     }
 }
