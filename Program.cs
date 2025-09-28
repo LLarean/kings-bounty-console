@@ -1,7 +1,7 @@
 ﻿using kings_bounty_console;
 using kings_bounty_console.Maps;
 
-char[,] content =
+char[,] worldMap =
 {
     { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
     { 'w', 'g', 'g', 'g', 'g', 'm', 'g', 'g', 'g', 'w' },
@@ -15,7 +15,9 @@ char[,] content =
     { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
 };
 
-var map = new Map(content);
+// new MapFile("\"C:\\map.txt\"").SaveLoad();
+
+var map = new Map(worldMap);
 var hero = new Hero(map.HeroPosition());
 
 var turn = 1;
