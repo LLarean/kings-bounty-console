@@ -16,6 +16,28 @@ A simple prototype of a game inspired by the classic King's Bounty (1990) game w
 
 ![World Map](https://github.com/LLarean/kings-bounty-console/blob/main/Screenshots/WorldMap.png)
 
+## Game Controls
+
+### Hotkeys
+- **ESC** - Go back / Exit menu
+- **Arrow Keys** - Move hero on the map
+- **Enter** - Confirm selection / Interact
+
+### Map Symbols
+The game world is represented using ASCII characters:
+
+| Symbol | Meaning |
+|--------|---------|
+| `g` | Ground |
+| `w` | Water |
+| `s` | Sand |
+| `m` | Mountain |
+|--------|---------|
+| `H` | Hero (your character) |
+| `C` | Castle |
+| `E` | Enemy |
+| `T` | Treasure |
+
 ## Learning Goals
 
 This project focuses on exploring and implementing:
