@@ -1,11 +1,15 @@
-﻿namespace kings_bounty_console.Maps;
+﻿using kings_bounty_console.Output;
+
+namespace kings_bounty_console.Maps;
 
 public class MapObject
 {
+    private readonly IOutput _output;
     private readonly char[,] _mapCells;
 
-    public MapObject(char[,] mapCells)
+    public MapObject(IOutput output, char[,] mapCells)
     {
+        _output = output;
         _mapCells = mapCells;
     }
     
@@ -20,7 +24,7 @@ public class MapObject
             {
                 DrawCell(_mapCells[row, col]);
             }
-            Console.WriteLine();
+            _output.WriteLine();
         }
     }
     

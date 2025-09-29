@@ -1,4 +1,5 @@
 ﻿using kings_bounty_console.Maps;
+using kings_bounty_console.Output;
 
 namespace Tests;
 
@@ -16,7 +17,7 @@ public class MapObjectTests
         
         Assert.DoesNotThrow(() =>
         {
-            new MapObject(map);
+            new MapObject(new TestOutput(), map);
         });
     }
     
@@ -27,7 +28,7 @@ public class MapObjectTests
         
         Assert.DoesNotThrow(() =>
         {
-            new MapObject(map);
+            new MapObject(new TestOutput(), map);
         });
     }
     
@@ -38,7 +39,7 @@ public class MapObjectTests
 
         Assert.DoesNotThrow(() =>
         {
-            new MapObject(map);
+            new MapObject(new TestOutput(), map);
         });
     }
 }
