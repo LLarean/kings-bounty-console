@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kings-bounty-console", "kings-bounty-console.csproj", "{A6B7013E-9210-4C6F-978C-BBEDD54D8FFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{01F23FDD-EB1D-4EDD-91C5-69F880132409}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,9 +12,5 @@ Global
 		{A6B7013E-9210-4C6F-978C-BBEDD54D8FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6B7013E-9210-4C6F-978C-BBEDD54D8FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6B7013E-9210-4C6F-978C-BBEDD54D8FFC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01F23FDD-EB1D-4EDD-91C5-69F880132409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01F23FDD-EB1D-4EDD-91C5-69F880132409}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01F23FDD-EB1D-4EDD-91C5-69F880132409}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01F23FDD-EB1D-4EDD-91C5-69F880132409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

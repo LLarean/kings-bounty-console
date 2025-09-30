@@ -33,6 +33,13 @@ public class Battle
         while (canFight)
         {
             map.Draw();
+            
+            var queue = GetQueue();
+
+            foreach (var unit in queue)
+            {
+                Console.Write($"{unit.Symbol}, ");
+            }
 
             ConsoleKeyInfo command = Console.ReadKey();
 
@@ -55,5 +62,22 @@ public class Battle
         {
             _battleField[i, 5] = _hero.Units[i].Symbol;
         }
+    }
+
+    private Queue<Unit> GetQueue()
+    {
+        Queue<Unit> queue = new();
+
+        foreach (var unit in _hero.Units)
+        {
+            queue.Enqueue(unit);
+        }
+        
+        foreach (var unit in _enemy.Units)
+        {
+            queue.Enqueue(unit);
+        }
+        
+        return queue;
     }
 }
