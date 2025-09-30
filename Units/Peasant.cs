@@ -1,8 +1,8 @@
 ﻿namespace kings_bounty_console;
 
-public class Peasant  : Unit
+public record Peasant  : Unit
 {
-    public Peasant() : base(1, 1, 1, 'P')
+    public Peasant() : base(new UnitCharacteristics(1, 1, 1), 'P')
     {
     }
 }

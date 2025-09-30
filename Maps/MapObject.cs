@@ -16,6 +16,19 @@ public class MapObject
     public int Rows => _mapCells.GetLength(0);
     public int Columns => _mapCells.GetLength(1);
 
+    public void DrawWithActiveCell(Position activeCell)
+    {
+        for (int row = 0; row < Rows; row++)
+        {
+            for (int col = 0; col < Columns; col++)
+            {
+                var isActive = row == activeCell.X && col == activeCell.Y;
+                DrawCell(_mapCells[row, col], isActive);
+            }
+            _output.WriteLine();
+        }
+    }
+
     public void Draw()
     {
         for (int row = 0; row < Rows; row++)
@@ -57,9 +70,18 @@ public class MapObject
                position.Y >= 0 && position.Y < Columns;
     }
     
-    private void DrawCell(char cellChar)
+    private void DrawCell(char cellChar, bool isActive = false)
     {
-        Console.Write("[");
+        if (isActive == true)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("[");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.Write("[");
+        }
         
         if (Enum.TryParse(cellChar.ToString(), out CellType cellType))
         {
@@ -68,6 +90,16 @@ public class MapObject
         
         Console.Write(cellChar);
         Console.ResetColor();
-        Console.Write("]");
+        
+        if (isActive == true)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("]");
+            Console.ResetColor();
+        }
+        else
+        {
+            Console.Write("]");
+        }
     }
 }

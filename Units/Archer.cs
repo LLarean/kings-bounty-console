@@ -1,8 +1,8 @@
 ﻿namespace kings_bounty_console;
 
-public class Archer : Unit
+public record Archer : Unit
 {
-    public Archer() : base(2, 2, 2, 'A', true)
+    public Archer() : base(new UnitCharacteristics(2, 2, 2), 'A', true)
     {
     }
 }

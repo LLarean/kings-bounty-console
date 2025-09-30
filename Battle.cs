@@ -1,4 +1,5 @@
 using kings_bounty_console.Maps;
+using kings_bounty_console.Output;
 
 namespace kings_bounty_console;
 
@@ -25,14 +26,17 @@ public class Battle
 
     public void Enter()
     {
-        SetUnitsTemp();
-        var map = new Map(_battleField);
+        SetUnitsToMap();
+        var map = new MapObject(new ConsoleOutput(), _battleField);
         
         var canFight = true;
 
         while (canFight)
         {
-            map.Draw();
+            Console.Clear();
+            
+            var position = new Position(0, 0);
+            map.DrawWithActiveCell(position);
             
             var queue = GetQueue();
 
@@ -48,10 +52,15 @@ public class Battle
                 canFight = false;
             }
             
+            if (command.Key == ConsoleKey.RightArrow)
+            {
+                var newPosition = new Position(position.X + 1, position.Y);
+                
+            }
         }
     }
 
-    private void SetUnitsTemp()
+    private void SetUnitsToMap()
     {
         for (int i = 0; i < _hero.Units.Length; i++)
         {

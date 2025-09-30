@@ -1,22 +1,22 @@
 namespace kings_bounty_console;
 
-public class Unit
+public record Unit
 {
-    private int _health;
-    private int _speed;
-    private int _attack;
-    private char _symbol;
+    private readonly UnitCharacteristics _unitCharacteristics;
+    private readonly char _symbol;
+    private readonly bool _isEnemy;
 
-    public Unit(int health, int speed, int attack, char symbol, bool canShoot = false)
+    public Unit(UnitCharacteristics unitCharacteristics, char symbol, bool canShoot = false, bool isEnemy = false)
     {
-        _health = health;
-        _speed = speed;
-        _attack = attack;
+        _unitCharacteristics = unitCharacteristics;
         _symbol = symbol;
+        _isEnemy = isEnemy;
     }
     
-    public int Health => _health;
-    public int Speed => _speed;
-    public int Attack => _attack;
+    public int Health => _unitCharacteristics.Health;
+    public int Speed => _unitCharacteristics.Speed;
+    public int Attack => _unitCharacteristics.Attack;
+
     public char Symbol => _symbol;
+    public bool IsEnemy => _isEnemy;
 }
