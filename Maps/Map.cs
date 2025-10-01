@@ -28,17 +28,17 @@ public record Map
         {
             for (int y = 0; y < _rows; y++)
             {
-                Console.Write("[");
+                // Console.Write("[");
 
                 if (Enum.TryParse(_currentState[x, y].ToString(), out CellType cellType))
                 {
-                    Console.ForegroundColor = new CellColor(cellType).Value();
+                    Console.BackgroundColor = new CellColor(cellType).Value();
                 }
 
-                Console.Write(_currentState[x, y]);
+                Console.Write(" " + _currentState[x, y] + " ");
 
                 Console.ResetColor();
-                Console.Write("]");
+                // Console.Write("]");
             }
 
             Console.WriteLine();

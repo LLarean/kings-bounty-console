@@ -17,6 +17,8 @@ public class Battle
         { 'g', 'g', 'g', 'g', 'g', 'g' },
         { 'g', 'g', 'g', 'g', 'g', 'g' },
     };
+
+    private int _unitCount;
     
     public Battle(Hero hero, Hero enemy)
     {
@@ -35,14 +37,26 @@ public class Battle
         {
             Console.Clear();
             
+            var units = GetUnits();
+            
             var position = new Position(0, 0);
             map.DrawWithActiveCell(position);
-            
-            var queue = GetUnits();
 
-            foreach (var unit in queue)
+            for (int i = 0; i < units.Count; i++)
             {
-                Console.Write($"{unit.Symbol}, ");
+                // Console.ForegroundColor
+                if (i == _unitCount)
+                {
+                    Console.BackgroundColor = ConsoleColor.Magenta;
+                }
+                
+                Console.Write($"{units[i].Symbol}, ");
+                
+                Console.ResetColor();
+            }
+            
+            foreach (var unit in units)
+            {
             }
 
             ConsoleKeyInfo command = Console.ReadKey();
@@ -55,7 +69,16 @@ public class Battle
             if (command.Key == ConsoleKey.RightArrow)
             {
                 var newPosition = new Position(position.X + 1, position.Y);
-                
+            }
+            
+            if (command.Key == ConsoleKey.Enter)
+            {
+                _unitCount++;
+
+                if (_unitCount >= units.Count)
+                {
+                    _unitCount = 0;
+                }
             }
         }
     }
