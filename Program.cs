@@ -1,5 +1,6 @@
 ﻿using kings_bounty_console;
 using kings_bounty_console.Maps;
+using KB.Output;
 
 char[,] worldMap =
 {
@@ -26,7 +27,8 @@ bool isRunning = true;
 
 while (isRunning)
 {
-    map.Draw();
+    Console.Clear();
+    MapOutput.Write(worldMap);
     Console.WriteLine($"\nGold: {gold}, Turn: {turn}");
 
     ConsoleKeyInfo command = Console.ReadKey();

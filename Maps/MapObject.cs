@@ -1,15 +1,11 @@
-﻿using kings_bounty_console.Output;
-
-namespace kings_bounty_console.Maps;
+﻿namespace kings_bounty_console.Maps;
 
 public class MapObject
 {
-    private readonly IOutput _output;
     private readonly char[,] _mapCells;
 
-    public MapObject(IOutput output, char[,] mapCells)
+    public MapObject(char[,] mapCells)
     {
-        _output = output;
         _mapCells = mapCells;
     }
     
@@ -25,7 +21,7 @@ public class MapObject
                 var isActive = row == activeCell.X && col == activeCell.Y;
                 DrawCell(_mapCells[row, col], isActive);
             }
-            _output.WriteLine();
+            Console.WriteLine();
         }
     }
 
@@ -37,7 +33,7 @@ public class MapObject
             {
                 DrawCell(_mapCells[row, col]);
             }
-            _output.WriteLine();
+            Console.WriteLine();
         }
     }
     
@@ -85,7 +81,7 @@ public class MapObject
         
         if (Enum.TryParse(cellChar.ToString(), out CellType cellType))
         {
-            Console.ForegroundColor = new CellColor(cellType).Value();
+            Console.ForegroundColor = CellColor.Value(cellType);
         }
         
         Console.Write(cellChar);

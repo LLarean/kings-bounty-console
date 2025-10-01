@@ -1,5 +1,4 @@
 using kings_bounty_console.Maps;
-using kings_bounty_console.Output;
 
 namespace kings_bounty_console;
 
@@ -29,7 +28,7 @@ public class Battle
     public void Enter()
     {
         SetUnitsToMap();
-        var map = new MapObject(new ConsoleOutput(), _battleField);
+        var map = new MapObject(_battleField);
         
         var canFight = true;
 

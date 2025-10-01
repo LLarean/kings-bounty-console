@@ -41,7 +41,7 @@ The game world is represented using ASCII characters:
 ## Learning Goals
 
 This project focuses on exploring and implementing:
-- **Elegant Objects** principles by Yegor Bugayenko
+- **Elegant Objects** principles by Yegor Bugayenko (or not?)
 - Clean OOP design without getters/setters
 - Immutable objects and functional approach
 - SOLID principles in practice
