@@ -38,7 +38,7 @@ public class Battle
             var position = new Position(0, 0);
             map.DrawWithActiveCell(position);
             
-            var queue = GetQueue();
+            var queue = GetUnits();
 
             foreach (var unit in queue)
             {
@@ -73,20 +73,21 @@ public class Battle
         }
     }
 
-    private Queue<Unit> GetQueue()
+    private List<Unit> GetUnits()
     {
-        Queue<Unit> queue = new();
+        List<Unit> units = new();
 
         foreach (var unit in _hero.Units)
         {
-            queue.Enqueue(unit);
+            units.Add(unit);
         }
         
         foreach (var unit in _enemy.Units)
         {
-            queue.Enqueue(unit);
+            unit.SetEnemyStatus(true);
+            units.Add(unit);
         }
         
-        return queue;
+        return units.OrderByDescending(o => o.Speed).ToList();
     }
 }

@@ -4,12 +4,17 @@ public record Unit
 {
     private readonly UnitCharacteristics _unitCharacteristics;
     private readonly char _symbol;
-    private readonly bool _isEnemy;
+    
+    private bool _isEnemy;
 
-    public Unit(UnitCharacteristics unitCharacteristics, char symbol, bool canShoot = false, bool isEnemy = false)
+    public Unit(UnitCharacteristics unitCharacteristics, char symbol, bool canShoot = false)
     {
         _unitCharacteristics = unitCharacteristics;
         _symbol = symbol;
+    }
+    
+    public void SetEnemyStatus(bool isEnemy = false)
+    {
         _isEnemy = isEnemy;
     }
     
