@@ -14,7 +14,7 @@
 
 A simple prototype of a game inspired by the classic King's Bounty (1990) game with basic logic and console display. This project serves as a playground for practicing Object-Oriented Programming principles and Elegant Objects design patterns in C#.
 
-![World Map](https://github.com/LLarean/kings-bounty-console/blob/main/Screenshots/WorldMap.png)
+![World Map](https://github.com/LLarean/kings-bounty-console/blob/main/Screenshots/WorldMap2.jpg)
 
 ## Game Controls
 
