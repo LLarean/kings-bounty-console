@@ -98,7 +98,7 @@ public class Battle
     private List<Unit> GetUnits()
     {
         List<Unit> units = new();
-
+        
         foreach (var unit in _hero.Units)
         {
             units.Add(unit);
