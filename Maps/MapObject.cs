@@ -72,6 +72,7 @@ public class MapObject
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("[");
+            
             Console.ResetColor();
         }
         else
