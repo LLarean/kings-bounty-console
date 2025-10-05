@@ -1,13 +1,15 @@
-﻿namespace KB;
+﻿using kings_bounty_console;
+
+namespace KB;
 
 public record Treasure
 {
-    private readonly int _value;
+    private readonly int _gold;
 
-    public Treasure(int value)
+    public Treasure(int gold)
     {
-        _value = value;
+        _gold = gold;
     }
     
-    public int Value => _value;
+    public int Gold => _gold;
 }

@@ -1,4 +1,5 @@
-﻿using kings_bounty_console;
+﻿using KB;
+using kings_bounty_console;
 using kings_bounty_console.Maps;
 using KB.Output;
 
@@ -15,6 +16,12 @@ char[,] worldMap =
     { 'w', 'E', 'g', 'g', 's', 's', 'g', 'g', 'g', 'w' },
     { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
 };
+
+Dictionary<object, Position> mapObjects = new Dictionary<object, Position>();
+
+Treasure treasure = new Treasure(100);
+mapObjects.Add(treasure, new Position(8, 3));
+mapObjects.Add(treasure, new Position(8, 3));
 
 // new MapFile("\"C:\\map.txt\"").SaveLoad();
 
