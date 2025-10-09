@@ -17,16 +17,16 @@ char[,] worldMap =
     { 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w' },
 };
 
-Dictionary<object, Position> mapObjects = new Dictionary<object, Position>();
-
-Treasure treasure = new Treasure(100);
-mapObjects.Add(treasure, new Position(8, 3));
-mapObjects.Add(treasure, new Position(8, 3));
-
 // new MapFile("\"C:\\map.txt\"").SaveLoad();
+
+Dictionary<object, Position> mapObjects = new Dictionary<object, Position>();
 
 var map = new Map(worldMap);
 var hero = new Hero(map.HeroPosition());
+
+Treasure treasure = new Treasure(100);
+mapObjects.Add(treasure, new Position(7, 2));
+mapObjects.Add(hero, new Position(4, 4));
 
 var turn = 1;
 var gold = 100;
