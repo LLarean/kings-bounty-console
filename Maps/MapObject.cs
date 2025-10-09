@@ -82,7 +82,7 @@ public class MapObject
         
         if (Enum.TryParse(cellChar.ToString(), out CellType cellType))
         {
-            Console.ForegroundColor = CellColor.Value(cellType);
+            Console.ForegroundColor = new CellColor(cellType).Value();
         }
         
         Console.Write(cellChar);

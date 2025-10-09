@@ -15,7 +15,7 @@ public static class MapOutput
             {
                 if (Enum.TryParse(value[x, y].ToString(), out CellType cellType))
                 {
-                    Console.BackgroundColor = CellColor.Value(cellType);
+                    Console.BackgroundColor = new CellColor(cellType).Value();
                 }
 
                 Console.Write($" {value[x, y]} ");

@@ -20,7 +20,7 @@ public record OutputCells
             {
                 if (Enum.TryParse(_cells[x, y].ToString(), out CellType cellType))
                 {
-                    Console.BackgroundColor = CellColor.Value(cellType);
+                    Console.BackgroundColor = new CellColor(cellType).Value();
                 }
 
                 Console.Write(" " + _cells[x, y] + " ");

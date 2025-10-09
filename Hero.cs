@@ -1,6 +1,8 @@
-﻿namespace kings_bounty_console;
+﻿using kings_bounty_console.Maps;
 
-public class Hero
+namespace kings_bounty_console;
+
+public class Hero : ICell
 {
     private Position _position;
     private int _gold;
@@ -14,4 +16,11 @@ public class Hero
     public Position Position => _position;
     public int Gold => _gold;
     public Unit[] Units => _units;
+    
+    public void Output()
+    {
+        Console.BackgroundColor = new CellColor(CellType.H).Value();
+        Console.Write($" {CellType.H} ");
+        Console.ResetColor();
+    }
 }

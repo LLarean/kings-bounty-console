@@ -30,7 +30,7 @@ public record Map
             {
                 if (Enum.TryParse(_currentState[x, y].ToString(), out CellType cellType))
                 {
-                    Console.BackgroundColor = CellColor.Value(cellType);
+                    Console.BackgroundColor = new CellColor(cellType).Value();
                 }
 
                 Console.Write(" " + _currentState[x, y] + " ");

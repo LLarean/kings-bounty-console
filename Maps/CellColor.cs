@@ -1,10 +1,17 @@
 namespace kings_bounty_console.Maps;
 
-public static class CellColor
+public record CellColor
 {
-    public static ConsoleColor Value(CellType cellType)
+    private readonly CellType _cellType;
+
+    public CellColor(CellType cellType)
     {
-        return cellType switch {
+        _cellType = cellType;
+    }
+    
+    public ConsoleColor Value()
+    {
+        return _cellType switch {
             CellType.w => ConsoleColor.Blue,
             CellType.g => ConsoleColor.DarkGreen,
             CellType.m => ConsoleColor.DarkGray,
