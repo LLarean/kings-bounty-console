@@ -1,4 +1,4 @@
-namespace kings_bounty_console.Maps;
+namespace KB.WorldMap.Maps;
 
 public record CellColor
 {

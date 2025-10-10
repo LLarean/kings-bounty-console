@@ -1,6 +1,6 @@
-using kings_bounty_console.Maps;
+using KB.WorldMap.Maps;
 
-namespace kings_bounty_console;
+namespace KB.WorldMap;
 
 public class Battle
 {

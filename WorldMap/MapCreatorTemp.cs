@@ -1,6 +1,6 @@
-using kings_bounty_console.Maps;
+using KB.WorldMap.Maps;
 
-namespace KB.Output;
+namespace KB.WorldMap;
 
 public class MapCreatorTemp
 {

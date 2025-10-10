@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace kings_bounty_console;
+namespace KB.WorldMap;
 
 public class MapFile
 {

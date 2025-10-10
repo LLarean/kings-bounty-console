@@ -1,7 +1,6 @@
 ﻿using KB;
-using kings_bounty_console;
-using kings_bounty_console.Maps;
-using KB.Output;
+using KB.WorldMap;
+using KB.WorldMap.Maps;
 
 char[,] worldMap =
 {

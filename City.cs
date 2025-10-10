@@ -1,4 +1,4 @@
-namespace kings_bounty_console;
+namespace KB.WorldMap;
 
 public class City
 {

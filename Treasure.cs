@@ -1,4 +1,4 @@
-﻿using kings_bounty_console;
+﻿using KB.WorldMap;
 
 namespace KB;
 
