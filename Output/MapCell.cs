@@ -2,11 +2,11 @@ using kings_bounty_console.Maps;
 
 namespace KB.Output;
 
-public record ConsoleCell
+public record MapCell
 {
     private readonly CellType _cellType;
 
-    public ConsoleCell(CellType cellType)
+    public MapCell(CellType cellType)
     {
         _cellType = cellType;
     }

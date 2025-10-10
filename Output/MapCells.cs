@@ -2,9 +2,9 @@ namespace KB.Output;
 
 public record MapCells
 {
-    private readonly ConsoleCell[,] _consoleCells;
+    private readonly MapCell[,] _consoleCells;
 
-    public MapCells(ConsoleCell[,] consoleCells)
+    public MapCells(MapCell[,] consoleCells)
     {
         _consoleCells = consoleCells;
     }

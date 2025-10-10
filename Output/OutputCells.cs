@@ -1,4 +1,6 @@
-﻿namespace kings_bounty_console.Maps;
+﻿using kings_bounty_console.Maps;
+
+namespace KB.Output;
 
 public record OutputCells
 {
