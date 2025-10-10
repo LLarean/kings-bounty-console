@@ -1,5 +1,3 @@
-using KB.WorldMap.Maps;
-
 namespace KB.WorldMap;
 
 public class MapCreatorTemp

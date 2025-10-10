@@ -1,19 +1,24 @@
-using KB.WorldMap.Maps;
-
 namespace KB.WorldMap;
 
 public record MapCell
 {
     private readonly CellType _cellType;
+    private readonly object? _content;
 
-    public MapCell(CellType cellType)
+    public MapCell(CellType cellType, object? content = null)
     {
         _cellType = cellType;
+        _content = content;
     }
 
     public string Value()
     {
         return $" {_cellType} ";
+    }
+    
+    public object? Content()
+    {
+        return _content;
     } 
     
     public ConsoleColor Color()

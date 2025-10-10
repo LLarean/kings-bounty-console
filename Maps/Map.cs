@@ -1,4 +1,6 @@
-﻿namespace KB.WorldMap.Maps;
+﻿using KB.WorldMap;
+
+namespace KB.General.Maps;
 
 public record Map
 {

@@ -1,3 +1,5 @@
+using KB.General;
+
 namespace KB.WorldMap;
 
 public record MapCells
@@ -25,5 +27,10 @@ public record MapCells
 
             Console.WriteLine();
         }
+    }
+
+    public MapCell GetMapCell(Position position)
+    {
+        return _consoleCells[position.X, position.Y];;
     }
 }

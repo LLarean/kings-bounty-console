@@ -1,6 +1,6 @@
-using KB.WorldMap.Maps;
+using KB.General.Maps;
 
-namespace KB.WorldMap;
+namespace KB.General;
 
 public class Battle
 {

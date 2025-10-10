@@ -1,6 +1,8 @@
 ﻿using KB;
+using KB.General;
+using KB.General.Maps;
+using KB.Output;
 using KB.WorldMap;
-using KB.WorldMap.Maps;
 
 char[,] worldMap =
 {
@@ -18,7 +20,9 @@ char[,] worldMap =
 
 // new MapFile("\"C:\\map.txt\"").SaveLoad();
 
-Dictionary<object, Position> mapObjects = new Dictionary<object, Position>();
+Dictionary<object, Position> mapObjects = new Dictionary<object, Position>()
+{
+};
 
 var map = new Map(worldMap);
 var hero = new Hero(map.HeroPosition());

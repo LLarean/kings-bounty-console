@@ -1,4 +1,4 @@
-namespace KB.WorldMap;
+namespace KB.General;
 
 public interface ICell
 {

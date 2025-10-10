@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace KB.WorldMap;
+namespace KB.General;
 
 public class MapFile
 {

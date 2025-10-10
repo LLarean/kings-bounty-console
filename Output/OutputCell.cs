@@ -1,4 +1,4 @@
-﻿namespace KB.WorldMap;
+﻿namespace KB.Output;
 
 public record OutputCell
 {

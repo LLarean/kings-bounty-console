@@ -1,4 +1,4 @@
-namespace KB.WorldMap.Maps;
+namespace KB.WorldMap;
 
 public enum CellType
 {
@@ -12,5 +12,5 @@ public enum CellType
     T, // Treasure
     E, // Enemy
     
-    U, // Unit on the battlefield
+    U, // TEMP (or not?) Unit on the battlefield
 }

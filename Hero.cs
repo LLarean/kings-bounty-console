@@ -1,6 +1,7 @@
-﻿using KB.WorldMap.Maps;
+﻿using KB.General.Maps;
+using KB.WorldMap;
 
-namespace KB.WorldMap;
+namespace KB.General;
 
 public class Hero : ICell
 {
