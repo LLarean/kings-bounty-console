@@ -70,6 +70,8 @@ while (isRunning)
         newPosition = new Position(newPosition.X, newPosition.Y - 1);
     }
 
+    var canInteract = map.CanInteract(newPosition);
+    var canMove = map.CanMove(newPosition);
     var cellType = map.GetCellTypeByPosition(newPosition);
 
     if (cellType.ToString() == nameof(CellType.g) || 

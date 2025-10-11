@@ -12,14 +12,25 @@ public record Map
         _baseState = baseState;
         _currentState = baseState;
     }
-    
+
     public Map(char[,] baseState, char[,] currentState)
     {
         _baseState = baseState;
         _currentState = currentState;
     }
+
+    public object CanInteract(Position newPosition)
+    {
+        throw new NotImplementedException();
+    }
     
+    public object CanMove(Position newPosition)
+    {
+        throw new NotImplementedException();
+    }
+
     private int _rows => _baseState.GetUpperBound(0) + 1;
+
     private int _columns => _baseState.Length / _rows;
 
     public void Draw()
@@ -68,7 +79,7 @@ public record Map
         currentState[newPosition.X, newPosition.Y] = 'H';
         return new Map(_baseState, _currentState);
     }
-    
+
     private Position GetPositionByType(char cellType)
     {
         for (int x = _rows - 1; x >= 0; x--)
