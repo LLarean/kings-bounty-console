@@ -50,25 +50,27 @@ while (isRunning)
 
     var newPosition = map.HeroPosition();
 
-    if (command.Key == ConsoleKey.UpArrow)
-    {
-        newPosition = new Position(newPosition.X - 1, newPosition.Y);
-    }
-
-    if (command.Key == ConsoleKey.DownArrow)
-    {
-        newPosition = new Position(newPosition.X + 1, newPosition.Y);
-    }
-
-    if (command.Key == ConsoleKey.RightArrow)
-    {
-        newPosition = new Position(newPosition.X, newPosition.Y + 1);
-    }
-
-    if (command.Key == ConsoleKey.LeftArrow)
-    {
-        newPosition = new Position(newPosition.X, newPosition.Y - 1);
-    }
+    newPosition = new NewPosition(command.Key).Value(newPosition);
+    
+    // if (command.Key == ConsoleKey.UpArrow)
+    // {
+    //     newPosition = new Position(newPosition.X - 1, newPosition.Y);
+    // }
+    //
+    // if (command.Key == ConsoleKey.DownArrow)
+    // {
+    //     newPosition = new Position(newPosition.X + 1, newPosition.Y);
+    // }
+    //
+    // if (command.Key == ConsoleKey.RightArrow)
+    // {
+    //     newPosition = new Position(newPosition.X, newPosition.Y + 1);
+    // }
+    //
+    // if (command.Key == ConsoleKey.LeftArrow)
+    // {
+    //     newPosition = new Position(newPosition.X, newPosition.Y - 1);
+    // }
 
     var canInteract = map.CanInteract(newPosition);
     var canMove = map.CanMove(newPosition);
