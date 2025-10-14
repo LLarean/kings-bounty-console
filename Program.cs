@@ -49,10 +49,20 @@ while (isRunning)
         isRunning = false;
     }
 
-    var temp = new Command(command.Key).Type();
+    var commandType = new Command(command.Key).Type();
     
     var newPosition = map.HeroPosition();
 
+    if(commandType == CommandType.Esc)
+    {
+        isRunning = false;
+    }
+
+    if (commandType == CommandType.Move)
+    {
+        // TODO
+    }
+    
     newPosition = new NewPosition(command.Key).Value(newPosition);
     
     if (command.Key == ConsoleKey.UpArrow)
