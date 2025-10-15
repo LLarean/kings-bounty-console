@@ -1,4 +1,4 @@
-using KB.WorldMap;
+using KB.WorldMaps;
 
 namespace KB.General.Maps;
 

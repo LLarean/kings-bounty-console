@@ -1,4 +1,4 @@
-namespace KB.WorldMap;
+namespace KB.WorldMaps;
 
 public class MapCreatorTemp
 {
@@ -28,6 +28,6 @@ public class MapCreatorTemp
         }
 
 
-        new MapCells(consoleCells).Output();
+        new WorldMap(consoleCells).Output();
     }
 }

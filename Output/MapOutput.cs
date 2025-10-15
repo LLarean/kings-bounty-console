@@ -1,5 +1,5 @@
 using KB.General.Maps;
-using KB.WorldMap;
+using KB.WorldMaps;
 
 namespace KB.Output;
 

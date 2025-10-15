@@ -1,12 +1,12 @@
 using KB.General;
 
-namespace KB.WorldMap;
+namespace KB.WorldMaps;
 
-public record MapCells
+public record WorldMap
 {
     private readonly MapCell[,] _consoleCells;
 
-    public MapCells(MapCell[,] consoleCells)
+    public WorldMap(MapCell[,] consoleCells)
     {
         _consoleCells = consoleCells;
     }
