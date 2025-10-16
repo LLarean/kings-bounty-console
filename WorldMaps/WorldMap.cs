@@ -21,7 +21,7 @@ public record WorldMap
             for (int y = 0; y < rows; y++)
             {
                 Console.BackgroundColor = _consoleCells[x, y].Color();
-                Console.Write(_consoleCells[x, y].Value());
+                Console.Write($" {_consoleCells[x, y].Type()} ");
                 Console.ResetColor();
             }
 

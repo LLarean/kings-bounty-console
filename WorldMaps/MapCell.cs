@@ -11,10 +11,7 @@ public record MapCell
         _content = content;
     }
 
-    public string Value()
-    {
-        return $" {_cellType} ";
-    }
+    public CellType Type() => _cellType;
     
     public object? Content()
     {
