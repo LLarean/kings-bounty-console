@@ -33,20 +33,18 @@ public class Game
     {
         bool isRunning = true;
 
-        MapObjects mapObjects = new MapObjects(0);
-
         var map = new Map(_worldMap);
         var hero = new Hero(map.HeroPosition());
 
         var turn = 1;
         var gold = 100;
 
-
         while (isRunning)
         {
             Console.Clear();
             MapOutput.Write(_worldMap);
             Console.WriteLine($"\nGold: {gold}, Turn: {turn}");
+            Console.WriteLine("Arrows - moving, ESC - Exit");
 
             ConsoleKeyInfo command = Console.ReadKey();
 
@@ -55,19 +53,7 @@ public class Game
                 isRunning = false;
             }
 
-            // var commandType = new Command(command.Key).Type();
-
             var newPosition = map.HeroPosition();
-
-            // if (commandType == CommandType.Esc)
-            // {
-            //     isRunning = false;
-            // }
-
-            // if (commandType == CommandType.Move)
-            // {
-            //     // TODO
-            // }
 
             newPosition = new NewPosition(command.Key).Value(newPosition);
 
@@ -91,8 +77,6 @@ public class Game
                 newPosition = new Position(newPosition.X, newPosition.Y - 1);
             }
 
-            // var canInteract = map.CanInteract(newPosition);
-            // var canMove = map.CanMove(newPosition);
             var cellType = map.GetCellTypeByPosition(newPosition);
 
             if (cellType.ToString() == nameof(CellType.g) ||
